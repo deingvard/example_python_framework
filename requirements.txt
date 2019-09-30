@@ -1,0 +1,6 @@
+pytest==5.2.0
+selenium==3.141.0
+webium==1.2.1
+pytest-allure-adaptor==1.7.10
+allure-python-commons==2.8.5
+pluggy==0.13.0
