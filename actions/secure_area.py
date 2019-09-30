@@ -1,7 +1,5 @@
 import allure
-
 from pages.secure_area_page import SecureAreaPageLocators
-import pytest
 import logging
 
 LOGGER = logging.getLogger(__name__)

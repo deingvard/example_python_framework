@@ -6,8 +6,8 @@ LOGGER = logging.getLogger(__name__)
 
 
 class LoginActions(LoginPageLocators):
-    # Get an instance driver, app, LoginPageLocators
 
+    # Get an instance driver, app, LoginPageLocators
     def __init__(self, app):
         self.app = app
         self.driver = app.driver
