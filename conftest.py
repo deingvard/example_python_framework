@@ -1,6 +1,10 @@
 from app.application import Application
 import pytest
 import json
+import functools
+import allure
+from allure_commons.types import AttachmentType
+# from allure.constants import AttachmentType
 import os.path
 
 fixture = None
@@ -35,8 +39,22 @@ def app(request, config):
 def stop(request):
     def fin():
         fixture.destroy()
+
     request.addfinalizer(fin)
     return fixture
+
+
+def capture_screenshot(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            func(*args, **kwargs)
+        except:
+            allure.attach('Screenshot', kwargs['app'].driver.get_screenshot_as_png(),
+                          attachment_type=AttachmentType.PNG)
+            raise
+
+    return wrapper
 
 
 def pytest_addoption(parser):

@@ -1,6 +1,7 @@
+from conftest import capture_screenshot
 from model.group import Group
 
-
+@capture_screenshot
 def test_login(app, config):
     app.open_home_page()
     app.login_page.enter_username(Group(
